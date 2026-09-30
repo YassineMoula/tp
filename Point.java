@@ -1,44 +1,82 @@
-public class Point {
-    private int abs;
-    private int ord;
+public class point {   
+   
+    private int Abs;   
+    private int Ord;   
+    private String nom;   
 
-    public Point(int x, int y) {
-        abs = x;
-        ord = y;
+    
+    point(int a, int b) {
+        Abs = a;
+        Ord = b;
+        nom = "P";
     }
 
-    public Point(int x) {
-        abs = x;
-        ord = 2 * x;
+    point(int a) {
+        Abs = a;
+        Ord = 2*a;
+        nom = "P";
     }
 
-    void translation(int d) {
-        abs += d;
+    point(String nom, int a, int b) {
+        this.nom = nom;
+        Abs = a;
+        Ord = b;
     }
 
-    void translation(int d, int d1) {
-        abs = abs + d;
-        ord = ord + d1;
-    }
 
-    void affiche() {
-        System.out.println("abs = " + abs);
-        System.out.println("ord = " + ord);
-    }
-}
+        public String getNom() {
+        return nom;
+        }
+    
+    
+   
+    void translationHorizontale(int t) {   
+        Abs = Abs + t;   
+    }  
+ 
+    void translation(int t, int t1) {   
+        Abs = Abs + t;   
+        Ord = Ord + t1;   
+    }     
+  
+    void affiche() {   
+        System.out.println("p("+ Abs +","+ Ord +")");   
+    }   
 
-class test {
-    public static void main(String[] args) {
-        Point p = new Point(2, 3);
-        p.translation(6);
-        p.translation(4, 4);
-        p.affiche();
+    public static void main(String[] args) {   
+        point p1 = new point("A", 2, 3);   
+        point p2 = new point("B", 4);   
 
-        System.out.println("****************");
+        System.out.println("nom de p1 : " + p1.getNom());   
+        System.out.println("nom de p2 : " + p2.getNom());   
 
-        Point p1 = new Point(5);
-        p1.translation(3);
-        p1.translation(2, 4);
-        p1.affiche();
-    }
+        p1.affiche();   
+        p1.translation(2, 5);   
+        p2.translationHorizontale(3);   
+        p1.affiche();   
+        p2.affiche();   
+    }   
+    public boolean coincide(point p) {
+        return (this.Abs == p.Abs && this.Ord == p.Ord);
+    } 
+}   
+  
+class test {   
+   
+    public static void main(String[] args) {            
+        point p1 = new point(2, 3);   
+        point p2 = new point(4);   
+
+        p1.affiche();   
+
+        p1.translation(2, 5);  
+        p2.translationHorizontale(3); 
+
+        
+        p1.affiche();   
+
+        
+        p2.affiche();   
+    }  
+    
 }
